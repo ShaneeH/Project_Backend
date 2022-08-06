@@ -1,6 +1,26 @@
 # Project_Backend
 Backend for my Online Store Project
-This API contains Http methods  that will comunicate with the Angular App (Front end for the Store) and MySQL Database (Data collection for the Store)
+This API contains the HTTP Methods to allow communication and Data Manipulation between the FrontEnd and DataBase of my Project
+
+# Pre Requirements
+This Project runs of localhost so therefore CORS Policy must be disabled 
+
+*Add this to the Program.cs to disable CORS
+
+```CS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowOrigin",
+        builder =>      
+        {
+            builder.WithOrigins(Local Host URL).AllowAnyHeader().AllowAnyMethod();});            
+            });
+ 
+```
+
+* The Code in this API is configured to work for MySQL Databases only
+
+* Please find the Insomnia Collection(Compatible with Postman) added to the Project for easier Testing
 
 
 
