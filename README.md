@@ -2,6 +2,8 @@
 Backend for my Online Store Project
 This API contains the HTTP Methods to allow communication and Data Manipulation between the FrontEnd and DataBase of my Project
 
+This Application was created using ASP.NET Core Web App (.NET 6.0)  in Visual Studio
+
 # Pre Requirements
 This Project runs of localhost so therefore CORS Policy must be disabled 
 
