@@ -24,60 +24,6 @@ namespace Backend_.Controllers
     {
 
 
-        [EnableCors("AllowOrigin")]
-        [HttpGet("~/Users/All")]
-        public IActionResult Get()
-        {
-
-            string select = "select * from ang_test.people";
-            string server = "server=127.0.0.1;port=3306;database=ang_test;uid=root;password=redking";
-
-            string select2 = "select * from sys.users_test";
-            string server2 = "server=project.ccdf0fmr7cmw.eu-west-1.rds.amazonaws.com;port=3306;database=sys;uid=admin;password=redking97";
-
-
-
-            //Open the SQL Connection
-            MySqlConnection conn = new MySqlConnection(server);
-
-            //This ArrayList will hold the User Objects as defined in the User.cs class
-            List<User> UserList = new List<User> { };
-
-            try
-            {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(select, conn);
-                Console.WriteLine("SQL Command Executed");
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-
-                while (reader.Read())
-                {
-                    Console.WriteLine(reader["id"]);
-                    Console.WriteLine(reader["email"]);
-                    Console.WriteLine();
-                    Console.WriteLine("--------- \n");
-
-
-                    User Person = new User((int)reader["id"], (string)reader["email"], (string)reader["msg"]);
-                    UserList.Add(Person);
-
-                    //List.Add(User_Json);
-                }
-
-                conn.Close();
-                return Ok(UserList);
-            }
-            catch (SqlException ex)
-            {
-                conn.Close();
-                Console.WriteLine("there was an issue!", ex);
-                return Ok(ex);
-            }
-
-        }
-
-
         [HttpGet("~/Test")]
         public IActionResult Test()
         {
@@ -300,7 +246,7 @@ namespace Backend_.Controllers
                 return Ok(ex);
             }
 
-            return Ok("hi");
+           
         }
 
         //Retrieve the Orders for each User by using there Email as the Identifier
@@ -355,7 +301,7 @@ namespace Backend_.Controllers
                 return Ok(ex);
             }
 
-            return Ok("hi");
+           
         }
 
 
@@ -412,7 +358,7 @@ namespace Backend_.Controllers
                 return Ok(ex);
             }
 
-            return Ok("hi");
+           
         }
 
 
@@ -453,7 +399,7 @@ namespace Backend_.Controllers
                 return Ok(ex);
             }
 
-            return Ok("hi");
+            return Ok("Order Created");
         }
 
 
@@ -502,7 +448,7 @@ namespace Backend_.Controllers
                 return Ok(ex);
             }
 
-            return Ok("hi");
+           
         }
 
 
@@ -541,7 +487,7 @@ namespace Backend_.Controllers
                 return Ok(ex);
             }
 
-                  return Ok("hi");
+                 
         }
 
 
@@ -585,11 +531,12 @@ namespace Backend_.Controllers
                 return Ok(ex);
             }
 
-            return Ok("hi");
+            
         }
 
     }
 
 }
+
 
 
