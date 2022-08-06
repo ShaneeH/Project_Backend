@@ -46,15 +46,10 @@ namespace Backend_.Controllers
         public IActionResult GetProducts()
         {
 
-            string select = "select * from ang_test.products";
-            string select3 = "select * from mobile_direct.products";
+   
+            string query = "select * from mobile_direct.products";
+            string server = "server=127.0.0.1;port=3306;database=ang_test;uid=root;password=";
 
-            string server = "server=127.0.0.1;port=3306;database=ang_test;uid=root;password=redking";
-
-
-
-            string select2 = "select * from sys.users_test";
-            string server2 = "server=project.ccdf0fmr7cmw.eu-west-1.rds.amazonaws.com;port=3306;database=sys;uid=admin;password=redking97";
 
 
 
@@ -67,7 +62,7 @@ namespace Backend_.Controllers
             try
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(select3, conn);
+                MySqlCommand cmd = new MySqlCommand(query, conn);
                 Console.WriteLine("SQL Command Executed");
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -116,7 +111,7 @@ namespace Backend_.Controllers
 
 
             List<String> Categories = new List<String> { };
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=";
             string query = "SELECT DISTINCT(`brand`) FROM `mobile_direct`.`products`;";
 
             //Open the SQL Connection
@@ -195,7 +190,7 @@ namespace Backend_.Controllers
             var search = Payload["search"];
 
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=";
             string query1 = $"SELECT* FROM mobile_direct.products WHERE name LIKE '{search}%'";
 
 
@@ -258,7 +253,7 @@ namespace Backend_.Controllers
             var email = Payload["email"];
 
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=";
             string query1 = $"SELECT* FROM mobile_direct.orders WHERE email = '{email}'";
 
 
@@ -314,7 +309,7 @@ namespace Backend_.Controllers
         {
             
             var brand = Payload["brand"];
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=";
             string query = $"SELECT * FROM `mobile_direct`.`products`WHERE brand = '{brand}' AND type = 'ACCESSORY';";
 
 
@@ -375,7 +370,7 @@ namespace Backend_.Controllers
 
 
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=";
             string query = $"INSERT INTO `mobile_direct`.`orders`(`email`,`date`,`products`,`total`)VALUES('{email}',now(),'{products}', {total});";
 
 
@@ -408,9 +403,9 @@ namespace Backend_.Controllers
         [HttpGet("~/Orders/All")]
         public async Task<IActionResult> GetOrders()
         {
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
-            string query = "Select * from mobile_direct.orders";
-            string q = "SELECT `orders`.`order_id`,`orders`.`email`,`orders`.`date`,`orders`.`products`,`orders`.`total` FROM `mobile_direct`.`orders`";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=";
+            
+            string query = "SELECT `orders`.`order_id`,`orders`.`email`,`orders`.`date`,`orders`.`products`,`orders`.`total` FROM `mobile_direct`.`orders`";
 
             //Open the SQL Connection
             MySqlConnection conn = new MySqlConnection(server);
@@ -419,7 +414,7 @@ namespace Backend_.Controllers
             try
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(q, conn);
+                MySqlCommand cmd = new MySqlCommand(query, conn);
                 Console.WriteLine("SQL Command Executed");
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -457,7 +452,7 @@ namespace Backend_.Controllers
         public async Task<IActionResult> GetOrdersAmount()
         {
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=";
             string query = "SELECT SUM(Total) FROM mobile_direct.orders;";
 
 
@@ -496,7 +491,7 @@ namespace Backend_.Controllers
         public async Task<IActionResult> GetOrdersQuantity()
         {
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=";
 
             string query = "SELECT COUNT(order_id) FROM mobile_direct.orders;";
 
