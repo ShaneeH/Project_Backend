@@ -66,7 +66,7 @@ namespace Backend_.Controllers
         public IActionResult GetProducts()
         {
             string select3 = "select * from mobile_direct.products";
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
             //Open the SQL Connection
             MySqlConnection conn = new MySqlConnection(server);
             //This ArrayList will hold the User Objects as defined in the User.cs class
@@ -118,7 +118,7 @@ namespace Backend_.Controllers
             var id = Payload["id"];
 
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
             string query1 = $"SELECT* FROM mobile_direct.products WHERE id = '{id}%'";
 
 
@@ -181,7 +181,7 @@ namespace Backend_.Controllers
 
 
             List<String> Categories = new List<String> { };
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
             string query = "SELECT DISTINCT(`brand`) FROM `mobile_direct`.`products`;";
 
             //Open the SQL Connection
@@ -275,7 +275,7 @@ namespace Backend_.Controllers
             var search = Payload["search"];
 
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
             string query1 = $"SELECT* FROM mobile_direct.products WHERE name LIKE '{search}%'";
 
 
@@ -338,7 +338,7 @@ namespace Backend_.Controllers
             var email = Payload["email"];
 
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
             string query1 = $"SELECT* FROM mobile_direct.orders WHERE email = '{email}'";
 
 
@@ -394,7 +394,7 @@ namespace Backend_.Controllers
         {
 
             var brand = Payload["brand"];
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
             string query = $"SELECT * FROM `mobile_direct`.`products`WHERE brand = '{brand}' AND type = 'ACCESSORY';";
 
 
@@ -457,7 +457,7 @@ namespace Backend_.Controllers
 
 
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
             string query = $"INSERT INTO `mobile_direct`.`orders`(`email`,`date`,`products`,`total`)VALUES('{email}',now(),'{products}', {total});";
 
 
@@ -498,7 +498,7 @@ namespace Backend_.Controllers
 
 
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
             string query = $"UPDATE mobile_direct.products SET price = {price} WHERE id = {id}";
 
 
@@ -534,7 +534,7 @@ namespace Backend_.Controllers
         [HttpGet("~/Orders/All")]
         public async Task<IActionResult> GetOrders()
         {
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
             string query = "Select * from mobile_direct.orders";
             string q = "SELECT `orders`.`order_id`,`orders`.`email`,`orders`.`date`,`orders`.`products`,`orders`.`total` FROM `mobile_direct`.`orders`";
 
@@ -585,7 +585,7 @@ namespace Backend_.Controllers
         public async Task<IActionResult> GetOrdersAmount()
         {
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
             string query = "SELECT SUM(Total) FROM mobile_direct.orders;";
 
 
@@ -624,7 +624,7 @@ namespace Backend_.Controllers
         public async Task<IActionResult> GetOrdersQuantity()
         {
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
 
             string query = "SELECT COUNT(order_id) FROM mobile_direct.orders;";
 
@@ -678,7 +678,7 @@ namespace Backend_.Controllers
             var img = Payload["img"];
 
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
 
             string query = $"INSERT INTO `mobile_direct`.`products`(`name`,`price`,`brand`,`desc`,`type`,`img`)VALUES('{name}',{price}, '{brand}','{desc}','{type}','{img}')";
 
@@ -723,7 +723,7 @@ namespace Backend_.Controllers
 
 
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
 
             string query = $"DELETE FROM mobile_direct.products where id = {id}";
 
@@ -779,7 +779,7 @@ namespace Backend_.Controllers
 
 
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
 
             string brand = (string)Payload["brand"];
             string email = (string)Payload["email"];
@@ -824,7 +824,7 @@ namespace Backend_.Controllers
         {
 
 
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
 
             string brand = (string)Payload["brand"];
             string email = (string)Payload["email"];
@@ -872,7 +872,7 @@ namespace Backend_.Controllers
 
 
             //This will increment the Brand by One Click
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
 
             string brand = (string)Payload["brand"];
             string email = (string)Payload["email"];
@@ -918,7 +918,7 @@ namespace Backend_.Controllers
 
 
             //This will increment the Brand by One Click
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
 
             string brand = (string)Payload["brand"];
             string email = (string)Payload["email"];
@@ -972,7 +972,7 @@ namespace Backend_.Controllers
             //Get the User Data and Order there Most Clicked Brands by Descending
 
             string select3 = $"select * from mobile_direct.{email} ORDER BY Clicks DESC";
-            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=redking";
+            string server = "server=127.0.0.1;port=3306;database=mobile_direct;uid=root;password=*";
 
 
             //Open the SQL Connection
